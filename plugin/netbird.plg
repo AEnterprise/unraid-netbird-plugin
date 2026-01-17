@@ -4,7 +4,7 @@
 <PLUGIN 
   name="netbird"
   author="AEnterprise"
-  version="2026.1.17.2"
+  version="2026.1.17.3"
   launch="Settings/netbird"
   pluginURL="https://raw.githubusercontent.com/AEnterprise/unraid-netbird-plugin/main/plugin/netbird.plg"
   support="https://forums.unraid.net/"
@@ -15,6 +15,10 @@
 
 <CHANGES>
 <![CDATA[
+
+### 2026.1.17.3
+
+
 
 ### 2026.1.17.2
 
@@ -30,9 +34,9 @@ For older releases, see https://github.com/AEnterprise/unraid-netbird-plugin/rel
 ]]>
 </CHANGES>
 
-<FILE Name="/boot/config/plugins/netbird/unraid-netbird-2026.1.17.2-noarch-1.txz">
-<URL>https://github.com/AEnterprise/unraid-netbird-plugin/releases/download/2026.1.17.2/unraid-netbird-2026.1.17.2-noarch-1.txz</URL>
-<SHA256>49083bf36c5899af7381492167532acfcd9c5072d757f56492b0d02b8d6a28a4</SHA256>
+<FILE Name="/boot/config/plugins/netbird/unraid-netbird-2026.1.17.3-noarch-1.txz">
+<URL>https://github.com/AEnterprise/unraid-netbird-plugin/releases/download/2026.1.17.3/unraid-netbird-2026.1.17.3-noarch-1.txz</URL>
+<SHA256>c50003cff63b411da51deff106a481ad14aa95df0e9c14caffc6611be3139ed0</SHA256>
 </FILE>
 
 <FILE Name="/boot/config/plugins/netbird/0.63.0.tgz">
@@ -53,7 +57,7 @@ if [ -L "/etc/rc.d/rc.netbird" ]; then
 fi
 
 # Install the plugin itself
-upgradepkg --install-new /boot/config/plugins/netbird/unraid-netbird-2026.1.17.2-noarch-1.txz
+upgradepkg --install-new /boot/config/plugins/netbird/unraid-netbird-2026.1.17.3-noarch-1.txz
 
 # Extract the netbird binary and make it available to the system
 mkdir -p /bin
@@ -69,12 +73,12 @@ echo "state" > /.gitignore
 
 
 # cleanup old versions
-rm -f $(ls /boot/config/plugins/netbird/unraid-netbird-*.txz 2>/dev/null | grep -v '2026.1.17.2')
+rm -f $(ls /boot/config/plugins/netbird/unraid-netbird-*.txz 2>/dev/null | grep -v '2026.1.17.3')
 
 echo ""
 echo "----------------------------------------------------"
 echo " netbird has been installed."
-echo " Version: 2026.1.17.2"
+echo " Version: 2026.1.17.3"
 echo "----------------------------------------------------"
 echo ""
 ]]>
