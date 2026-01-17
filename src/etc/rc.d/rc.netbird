@@ -1,0 +1,35 @@
+#!/bin/sh
+
+start_netbird() {
+      if  /usr/bin/pgrep --ns $$ --euid root -f "^/usr/local/sbin/netbird" 1> /dev/null 2> /dev/null ; then
+          echo "Netbird was already running"
+      else
+          echo "Starting Netbird..."
+          mkdir -p /boot/config/plugins/netbird/state
+          NB_STATE_DIR="/boot/config/plugins/netbird/state" /usr/local/sbin/netbird "service" "run" "--log-level" "info" "--daemon-addr" "unix:///var/run/netbird.sock" "--log-file" "/var/log/netbird/client.log" 1>/dev/null 2>&1 &
+      fi
+}
+
+stop_netbird() {
+if ! /usr/bin/pgrep --ns $$ --euid root -f "^/usr/local/sbin/netbird" 1> /dev/null 2> /dev/null ; then
+    echo "Netbird was not running"
+else
+    killall --ns $$ --wait netbird 2> /dev/null
+fi
+}
+
+
+case "$1" in
+'start')
+  start_netbird
+  ;;
+'stop')
+  stop_netbird
+  ;;
+'restart')
+  stop_netbird
+  start_netbird
+  ;;
+*)
+  echo "usage $0 start|stop|restart"
+esac

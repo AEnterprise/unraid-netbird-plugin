@@ -1,0 +1,7 @@
+{
+    "title": "netbird",
+    "files": [
+        "/var/log/netbird*"
+    ],
+    "system_diagnostics": true
+}

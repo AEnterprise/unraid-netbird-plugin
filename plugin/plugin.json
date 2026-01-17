@@ -1,9 +1,9 @@
 {
-    "name": "plugin-name",
-    "package_name": "my-plugin",
-    "author": "Your Name",
-    "min": "7.0.0",
-    "icon": "question",
-    "support": "https://...",
-    "launch": "Tools/Something"
+  "name": "netbird",
+  "package_name": "unraid-netbird",
+  "author": "AEnterprise",
+  "support": "https://forums.unraid.net/",
+  "launch": "Settings/netbird",
+  "netbirdVersion": "0.63.0",
+  "netbirdSHA256": "41b6f5ecb060bc6a6e6ad55187f9729dab2775d0849e9a41f376df12779a9275"
 }

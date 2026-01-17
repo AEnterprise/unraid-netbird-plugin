@@ -26,13 +26,38 @@ For older releases, see https://github.com/{{ env['GITHUB_REPOSITORY'] }}/releas
 <SHA256>{{ env['PLUGIN_CHECKSUM'] }}</SHA256>
 </FILE>
 
+<FILE Name="/boot/config/plugins/{{ name }}/{{ {{ netbirdVersion }} }}.tgz">
+<URL>https://github.com/netbirdio/netbird/releases/download/v0.63.0/netbird_{{ netbirdVersion }}_linux_amd64.tar.gz</URL>
+<SHA256>{{ netbirdSHA256 }}</SHA256>
+</FILE>
+
 <!--
 The 'install' script.
 -->
 <FILE Run="/bin/bash">
 <INLINE>
 <![CDATA[
+
+# Cleanup existing service file if it already exists
+if [ -L "/etc/rc.d/rc.netbird" ]; then
+    rm -f /etc/rc.d/rc.netbird
+fi
+
+# Install the plugin itself
 upgradepkg --install-new /boot/config/plugins/{{ name }}/{{ package_name }}-{{ env['PLUGIN_VERSION'] }}-noarch-1.txz
+
+# Extract the netbird binary and make it available to the system
+mkdir -p {{ pluginDirectory }}/bin
+tar xzf {{ configDirectory }}/{{ netbirdVersion }}.tgz --strip-components 1 -C {{ pluginDirectory }}/bin
+ln -s {{ pluginDirectory }}/bin/netbird /usr/local/sbin/netbird
+
+# The connect plugin uses git for unecrypted backups, make sure it doesn't leak our state to the world by accident
+echo "state" > {{ configDirectory }}/.gitignore
+
+# restart netbird, if it wasn't running now it will be
+/etc/rc.d/rc.netbird restart
+
+
 
 # cleanup old versions
 rm -f $(ls /boot/config/plugins/{{ name }}/{{ package_name }}-*.txz 2>/dev/null | grep -v '{{ env['PLUGIN_VERSION'] }}')
@@ -54,6 +79,12 @@ The 'remove' script.
 <INLINE>
 <![CDATA[
 removepkg {{ package_name }}
+
+# Stop service
+/etc/rc.d/rc.netbird stop 2>/dev/null
+
+#Cleanup the binary
+rm /usr/local/sbin/netbird
 
 rm -rf /usr/local/emhttp/plugins/{{ name }}
 rm -rf /boot/config/plugins/{{ name }}

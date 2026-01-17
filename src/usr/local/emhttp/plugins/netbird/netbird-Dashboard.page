@@ -1,12 +1,12 @@
-Cond="version_compare(parse_ini_file('/etc/unraid-version')['version'],'6.11.9','>')"
+Cond="version_compare(parse_ini_file('/etc/unraid-version')['version'],'7.2.3','>')"
 Menu="Dashboard:0"
 ---
 <?php
 
-$cardName = "my-plugin";
+$cardName = "netbird";
 
 $mytiles[$cardName]["column1"] = <<<EOT
-    <tbody title="My New Plugin">
+    <tbody title="Netbird">
       <tr>
         <td>
           <div class='tile-header' id='{$cardName}-dashboard-card'>
@@ -14,7 +14,7 @@ $mytiles[$cardName]["column1"] = <<<EOT
               <i class='icon-performance f32'></i>
               <div class='section'>
                 <h3 class='tile-header-main' id='{$cardName}-dashboard-title'>
-                  My New Plugin
+                  Netbird
                 </h3>
                 <span>Subtitle</span>
               </div>
@@ -36,19 +36,4 @@ $mytiles[$cardName]["column1"] = <<<EOT
     </tbody>
 
     EOT;
-
-// Compatibilty for Unraid versions before 7.2
-$isResponsiveWebgui = version_compare(parse_ini_file('/etc/unraid-version')['version'] ?? "", '7.2', '>=');
-if ( ! $isResponsiveWebgui) {
-    $mytiles[$cardName]["column1"] .= <<<EOT
-        <script>
-            $(function() {
-                $('#{$cardName}-dashboard-title').replaceWith(function() {
-                    return $(this).text() + "<br>";
-                });
-                $('#{$cardName}-settings-button').prependTo('#{$cardName}-dashboard-card');
-            });
-        </script>
-        EOT;
-}
 ?>

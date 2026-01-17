@@ -1,5 +1,5 @@
-Menu="Utilities"
-Title="My New Plugin"
+Menu="NetworkServices"
+Title="Netbird"
 Icon="fa-question"
 ---
 <?php
@@ -20,7 +20,7 @@ require_once "/usr/local/emhttp/plugins/dynamix/include/Wrappers.php";
 // You can also provide /usr/local/emhttp/plugins/my-plugin/default.cfg which contains
 // default values that are used when settings are missing from the user config
 // or when the user config file does not exist
-$cfg = parse_plugin_cfg("my-plugin");
+$cfg = parse_plugin_cfg("netbird");
 ?>
 
 <!-- Load required JavaScript and CSS for the file picker component -->
