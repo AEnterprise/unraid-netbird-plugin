@@ -1,3 +1,3 @@
-** netbird **
+**Netbird**
 
 Netbird plugin
