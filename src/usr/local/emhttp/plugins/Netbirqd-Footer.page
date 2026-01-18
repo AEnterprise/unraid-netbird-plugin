@@ -1,0 +1,8 @@
+Menu="Buttons:10"
+Link="nav-user"
+---
+<script>
+$(function() {
+    var footer = $("<span id='netbird_footer' title='Netbird status: TODO'><img style='height:1em' src='/plugins/netbird/assets/netbird.png'/>
+})
+</script>
