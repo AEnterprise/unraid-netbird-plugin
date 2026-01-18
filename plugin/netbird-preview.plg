@@ -4,7 +4,7 @@
 <PLUGIN 
   name="netbird"
   author="AEnterprise"
-  version="2025.01.18.3"
+  version="2025.01.18.4"
   launch="Settings/netbird"
   pluginURL="https://raw.githubusercontent.com/AEnterprise/unraid-netbird-plugin/main/plugin/netbird-preview.plg"
   support="https://forums.unraid.net/"
@@ -16,6 +16,10 @@
 <CHANGES>
 <![CDATA[
 
+### 2025.01.18.4
+
+
+
 ### 2025.01.18.3
 
 
@@ -24,18 +28,14 @@
 
 
 
-### 2025.01.18
-
-
-
 
 For older releases, see https://github.com/AEnterprise/unraid-netbird-plugin/releases
 ]]>
 </CHANGES>
 
-<FILE Name="/boot/config/plugins/netbird/unraid-netbird-2025.01.18.3-noarch-1.txz">
-<URL>https://github.com/AEnterprise/unraid-netbird-plugin/releases/download/2025.01.18.3/unraid-netbird-2025.01.18.3-noarch-1.txz</URL>
-<SHA256>6794297372dadac04b4011047e993154ffc12ff80a4dc3493d5d9b74b8cc054e</SHA256>
+<FILE Name="/boot/config/plugins/netbird/unraid-netbird-2025.01.18.4-noarch-1.txz">
+<URL>https://github.com/AEnterprise/unraid-netbird-plugin/releases/download/2025.01.18.4/unraid-netbird-2025.01.18.4-noarch-1.txz</URL>
+<SHA256>178c7767a14dd0471726b7d0dc70a45d52d427599be2945ca50b048d3818b397</SHA256>
 </FILE>
 
 <FILE Name="/boot/config/plugins/netbird/0.63.0.tgz">
@@ -59,11 +59,11 @@ if [ -L "/etc/rc.d/rc.netbird" ]; then
 fi
 
 # Install the plugin itself
-upgradepkg --install-new /boot/config/plugins/netbird/unraid-netbird-2025.01.18.3-noarch-1.txz
+upgradepkg --install-new /boot/config/plugins/netbird/unraid-netbird-2025.01.18.4-noarch-1.txz
 
 # Extract the netbird binary and make it available to the system
 mkdir -p /usr/local/emhttp/plugins/netbird/bin
-tar xzf /boot/config/plugins/netbird/0.63.0.tgz -- -C /usr/local/emhttp/plugins/netbird/bin netbird
+tar xzf /boot/config/plugins/netbird/0.63.0.tgz -C /usr/local/emhttp/plugins/netbird/bin netbird
 ln -s /usr/local/emhttp/plugins/netbird/bin/netbird /usr/local/sbin/netbird
 
 # The connect plugin uses git for unecrypted backups, make sure it doesn't leak our state to the world by accident
@@ -73,7 +73,7 @@ echo "state" > /boot/config/plugins/netbird/.gitignore
 /etc/rc.d/rc.netbird restart
 
 # cleanup old versions
-rm -f $(ls /boot/config/plugins/netbird/unraid-netbird-*.txz 2>/dev/null | grep -v '2025.01.18.3')
+rm -f $(ls /boot/config/plugins/netbird/unraid-netbird-*.txz 2>/dev/null | grep -v '2025.01.18.4')
 
 # Update plugin name for non-main branches
 sed -i "s/\*Netbird/\*Netbird (Preview)/" /usr/local/emhttp/plugins/netbird/README.md
@@ -82,7 +82,7 @@ sed -i "s/\*Netbird/\*Netbird (Preview)/" /usr/local/emhttp/plugins/netbird/READ
 echo ""
 echo "----------------------------------------------------"
 echo " netbird has been installed."
-echo " Version: 2025.01.18.3"
+echo " Version: 2025.01.18.4"
 echo "----------------------------------------------------"
 echo ""
 ]]>
