@@ -1,6 +1,9 @@
 <?xml version='1.0' standalone='yes'?>
 <!DOCTYPE PLUGIN>
 
+{% set pluginDirectory = "/usr/local/emhttp/plugins/netbird" -%}
+{% set configDirectory = "/boot/config/plugins/netbird" -%}
+
 <PLUGIN 
   name="{{ name }}"
   author="{{ author }}"
@@ -37,6 +40,15 @@ The 'install' script.
 <FILE Run="/bin/bash">
 <INLINE>
 <![CDATA[
+
+# remove other branch (if switching between main and preview)
+{% if env['PLUGIN_RELEASE'] != '' -%}
+rm -f /boot/config/plugins/netbird.plg
+rm -f /var/log/plugins/netbird.plg
+{% else %}
+rm -f /boot/config/plugins/netbird-preview.plg
+rm -f /var/log/plugins/netbird-preview.plg
+{% endif -%}
 
 # Cleanup existing service file if it already exists
 if [ -L "/etc/rc.d/rc.netbird" ]; then
