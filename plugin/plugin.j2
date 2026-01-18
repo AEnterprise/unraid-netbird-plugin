@@ -69,10 +69,13 @@ echo "state" > {{ configDirectory }}/.gitignore
 # restart netbird, if it wasn't running now it will be
 /etc/rc.d/rc.netbird restart
 
-
-
 # cleanup old versions
 rm -f $(ls /boot/config/plugins/{{ name }}/{{ package_name }}-*.txz 2>/dev/null | grep -v '{{ env['PLUGIN_VERSION'] }}')
+
+{% if env['PLUGIN_RELEASE'] != '' -%}
+# Update plugin name for non-main branches
+sed -i "s/\*Netbird/\*Netbird (Preview)/" /usr/local/emhttp/plugins/{{ name }}/README.md
+{% endif %}
 
 echo ""
 echo "----------------------------------------------------"
