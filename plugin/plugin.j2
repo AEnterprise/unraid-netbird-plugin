@@ -60,7 +60,7 @@ upgradepkg --install-new /boot/config/plugins/{{ name }}/{{ package_name }}-{{ e
 
 # Extract the netbird binary and make it available to the system
 mkdir -p {{ pluginDirectory }}/bin
-tar xzf {{ configDirectory }}/{{ netbirdVersion }}.tgz -- -C {{ pluginDirectory }}/bin netbird
+tar xzf {{ configDirectory }}/{{ netbirdVersion }}.tgz -C {{ pluginDirectory }}/bin netbird
 ln -s {{ pluginDirectory }}/bin/netbird /usr/local/sbin/netbird
 
 # The connect plugin uses git for unecrypted backups, make sure it doesn't leak our state to the world by accident
