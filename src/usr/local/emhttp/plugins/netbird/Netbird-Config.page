@@ -1,6 +1,7 @@
 Menu="NetworkServices"
 Title="Netbird"
 Icon="fa-question"
+Icon="assets/netbird.png"
 ---
 <?php
 /**
