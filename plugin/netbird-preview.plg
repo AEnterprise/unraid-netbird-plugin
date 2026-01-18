@@ -4,7 +4,7 @@
 <PLUGIN 
   name="netbird"
   author="AEnterprise"
-  version="2025.01.18.5"
+  version="2025.01.18.6"
   launch="Settings/netbird"
   pluginURL="https://raw.githubusercontent.com/AEnterprise/unraid-netbird-plugin/main/plugin/netbird-preview.plg"
   support="https://forums.unraid.net/"
@@ -16,6 +16,10 @@
 <CHANGES>
 <![CDATA[
 
+### 2025.01.18.6
+
+
+
 ### 2025.01.18.5
 
 
@@ -24,18 +28,14 @@
 
 
 
-### 2025.01.18.3
-
-
-
 
 For older releases, see https://github.com/AEnterprise/unraid-netbird-plugin/releases
 ]]>
 </CHANGES>
 
-<FILE Name="/boot/config/plugins/netbird/unraid-netbird-2025.01.18.5-noarch-1.txz">
-<URL>https://github.com/AEnterprise/unraid-netbird-plugin/releases/download/2025.01.18.5/unraid-netbird-2025.01.18.5-noarch-1.txz</URL>
-<SHA256>0721ff2d3ee71a0cfa1caca3e04806057a902bf5bf1bf75bc564c991efb6136b</SHA256>
+<FILE Name="/boot/config/plugins/netbird/unraid-netbird-2025.01.18.6-noarch-1.txz">
+<URL>https://github.com/AEnterprise/unraid-netbird-plugin/releases/download/2025.01.18.6/unraid-netbird-2025.01.18.6-noarch-1.txz</URL>
+<SHA256>870f6737be21f6816aff2393232fa6d039a95b3d9b0efbfb882de1692c8f6396</SHA256>
 </FILE>
 
 <FILE Name="/boot/config/plugins/netbird/0.63.0.tgz">
@@ -59,7 +59,7 @@ if [ -L "/etc/rc.d/rc.netbird" ]; then
 fi
 
 # Install the plugin itself
-upgradepkg --install-new /boot/config/plugins/netbird/unraid-netbird-2025.01.18.5-noarch-1.txz
+upgradepkg --install-new /boot/config/plugins/netbird/unraid-netbird-2025.01.18.6-noarch-1.txz
 
 # Extract the netbird binary and make it available to the system
 mkdir -p /usr/local/emhttp/plugins/netbird/bin
@@ -76,7 +76,7 @@ sysctl -p /etc/sysctl.d/99-netbird.conf
 /etc/rc.d/rc.netbird restart
 
 # cleanup old versions
-rm -f $(ls /boot/config/plugins/netbird/unraid-netbird-*.txz 2>/dev/null | grep -v '2025.01.18.5')
+rm -f $(ls /boot/config/plugins/netbird/unraid-netbird-*.txz 2>/dev/null | grep -v '2025.01.18.6')
 
 # Update plugin name for non-main branches
 sed -i "s/\*Netbird/\*Netbird (Preview)/" /usr/local/emhttp/plugins/netbird/README.md
@@ -85,7 +85,7 @@ sed -i "s/\*Netbird/\*Netbird (Preview)/" /usr/local/emhttp/plugins/netbird/READ
 echo ""
 echo "----------------------------------------------------"
 echo " netbird has been installed."
-echo " Version: 2025.01.18.5"
+echo " Version: 2025.01.18.6"
 echo "----------------------------------------------------"
 echo ""
 ]]>
