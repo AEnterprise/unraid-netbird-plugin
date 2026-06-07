@@ -4,7 +4,7 @@
 <PLUGIN 
   name="netbird"
   author="AEnterprise"
-  version="2026.06.07.1"
+  version=""
   launch="Settings/netbird"
   pluginURL="https://raw.githubusercontent.com/AEnterprise/unraid-netbird-plugin/main/plugin/netbird-preview.plg"
   support="https://forums.unraid.net/"
@@ -16,6 +16,10 @@
 <CHANGES>
 <![CDATA[
 
+### 
+
+
+
 ### 2026.06.07.1
 
 
@@ -24,23 +28,19 @@
 
 
 
-### 2025.01.18.5
-
-
-
 
 For older releases, see https://github.com/AEnterprise/unraid-netbird-plugin/releases
 ]]>
 </CHANGES>
 
-<FILE Name="/boot/config/plugins/netbird/unraid-netbird-2026.06.07.1-noarch-1.txz">
-<URL>https://github.com/AEnterprise/unraid-netbird-plugin/releases/download/2026.06.07.1/unraid-netbird-2026.06.07.1-noarch-1.txz</URL>
-<SHA256>8b54610f532909b8864b940f7eb6f861bac1bab44b62bd6d3b652a9ad1ab5acb</SHA256>
+<FILE Name="/boot/config/plugins/netbird/unraid-netbird--noarch-1.txz">
+<URL>https://github.com/AEnterprise/unraid-netbird-plugin/releases/download//unraid-netbird--noarch-1.txz</URL>
+<SHA256>afe8e665188ffd14056d133939ced820120cceebcfe8cc57d03c2a2949a326e6</SHA256>
 </FILE>
 
 <FILE Name="/boot/config/plugins/netbird/0.72.2.tgz">
 <URL>https://github.com/netbirdio/netbird/releases/download/v0.72.2/netbird_0.72.2_linux_amd64.tar.gz</URL>
-<SHA256>sha256:5ef1dd97eb0b0784626d66a0029367ced83a189740db2e2765f161647ff27009</SHA256>
+<SHA256>5ef1dd97eb0b0784626d66a0029367ced83a189740db2e2765f161647ff27009</SHA256>
 </FILE>
 
 <!--
@@ -59,7 +59,7 @@ if [ -L "/etc/rc.d/rc.netbird" ]; then
 fi
 
 # Install the plugin itself
-upgradepkg --install-new /boot/config/plugins/netbird/unraid-netbird-2026.06.07.1-noarch-1.txz
+upgradepkg --install-new /boot/config/plugins/netbird/unraid-netbird--noarch-1.txz
 
 # Extract the netbird binary and make it available to the system
 mkdir -p /usr/local/emhttp/plugins/netbird/bin
@@ -76,7 +76,7 @@ sysctl -p /etc/sysctl.d/99-netbird.conf
 /etc/rc.d/rc.netbird restart
 
 # cleanup old versions
-rm -f $(ls /boot/config/plugins/netbird/unraid-netbird-*.txz 2>/dev/null | grep -v '2026.06.07.1')
+rm -f $(ls /boot/config/plugins/netbird/unraid-netbird-*.txz 2>/dev/null | grep -v '')
 
 # Update plugin name for non-main branches
 sed -i "s/\*Netbird/\*Netbird (Preview)/" /usr/local/emhttp/plugins/netbird/README.md
@@ -85,7 +85,7 @@ sed -i "s/\*Netbird/\*Netbird (Preview)/" /usr/local/emhttp/plugins/netbird/READ
 echo ""
 echo "----------------------------------------------------"
 echo " netbird has been installed."
-echo " Version: 2026.06.07.1"
+echo " Version: "
 echo "----------------------------------------------------"
 echo ""
 ]]>
