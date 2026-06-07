@@ -4,6 +4,6 @@
   "author": "AEnterprise",
   "support": "https://forums.unraid.net/",
   "launch": "Settings/netbird",
-  "netbirdVersion": "0.63.0",
-  "netbirdSHA256": "41b6f5ecb060bc6a6e6ad55187f9729dab2775d0849e9a41f376df12779a9275"
+  "netbirdVersion": "0.72.2",
+  "netbirdSHA256": "sha256:5ef1dd97eb0b0784626d66a0029367ced83a189740db2e2765f161647ff27009"
 }
